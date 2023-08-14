@@ -30,6 +30,7 @@ const inputBody = {
   options: {
     // …advanced options…
   },
+  
 };
 const headers = {
   "Content-Type": "application/json",
@@ -75,5 +76,50 @@ fetch("https://api.freeconvert.com/v1/process/compress", {
     console.log(body);
   });
 
+// EXPORTAR ARQUIVO DA URL
+inputBody = {
+  input: [import_task_id_1, import_task_id_2],
+  filename: "some.zip", // optional
+  archive_multiple_files: true,
+};
+const headers = {
+  "Content-Type": "application/json",
+  Accept: "application/json",
+  Authorization: `Bearer ${access_token}`,
+};
 
-
+fetch("https://api.freeconvert.com/v1/process/export/url", {
+  method: "POST",
+  body: inputBody,
+  headers: headers,
+})
+  .then(function (res) {
+    return res.json();
+  })
+  .then(function (body) {
+    console.log(body);
+  });
+/////////////////////////////////////////////////////////////////////
+{
+  tag: "conversion",
+  tasks: {
+    import: {
+      operation: "import/url",
+      url: "https://example.com/some.mp4",
+      filename: "some.jpg", // optional
+    },
+    convert: {
+      operation: "convert",
+      input: "import",
+      output_format: "mp3",
+      options: {
+        png_compression_quality: 70,
+      },
+    },
+    export: {
+      operation: "export/url",
+      input: "convert",
+      filename: "some.zip",
+    },
+  },
+}
