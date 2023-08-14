@@ -4,6 +4,6 @@ var fs = require('fs'),
 fs.createReadStream('valorinput.mp4')
 .pipe(cloudconvert.convert({
     "inputformat": "mp4,
-    "outputdormat": "mp3",
+    "outputformat": "mp3",
     "input": "upload"
 })).pipe(fs.createWriteStream("outputfile.mp3"));
