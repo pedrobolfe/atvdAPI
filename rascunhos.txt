@@ -5,3 +5,5 @@ CLOUD CONVERTER
 - https://api.cloudconvert.com/v2/jobs/ -- pode ser o link para requests
 
 links util:
+- https://www.youtube.com/watch?v=rxWVeN0w6vI
+- https://www.youtube.com/watch?v=wldw2LVbjpI
