@@ -2,6 +2,6 @@ CLOUD CONVERTER
 - https://cloudconvert.com/mp4-to-mp3
 - doc : https://cloudconvert.com/api/v2
 - https://github.com/cloudconvert/cloudconvert-node
-- GET https://sync.api.cloudconvert.com/v2/jobs/6559c281-ed85-4728-80db-414561c631e9?redirect=true -- pode ser o link para requests
+- https://api.cloudconvert.com/v2/jobs/ -- pode ser o link para requests
 
 links util:
