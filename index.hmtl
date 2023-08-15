@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="CloudConverter/script.js" type="module" defer></script>
+</head>
+<body>
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Instituto_Federal_do_Paran%C3%A1_-_Marca_Vertical_2015.svg/1200px-Instituto_Federal_do_Paran%C3%A1_-_Marca_Vertical_2015.svg.png" alt="">
+    </header>
+    <main class="container">
+        <h1 class="title">Converter MP4 (Vídeo) para MP3 (Áudio)</h1>
+        <div class="row">
+            <div class="inputbox">
+                <input type="text" id="url" required>
+                <label for="url">Cole aqui o link do seu vídeo</label>
+            </div>
+        </div>
+        <div class="row">
+            <button>Baixar</button>
+        </div>
+    </main>
+    <footer>
+        Pedrinho &#169 2023.
+    </footer>
+</body>
+</html>
