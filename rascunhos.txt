@@ -1,1 +1,16 @@
+CLOUD CONVERTER
+- https://cloudconvert.com/mp4-to-mp3
+- doc : https://cloudconvert.com/api/v2
+- https://github.com/cloudconvert/cloudconvert-node
+- https://api.cloudconvert.com/v2/jobs/ -- pode ser o link para requests
 
+
+FREE CONVERT
+- https://api.freeconvert.com/v1 -- url base
+- https://www.freeconvert.com/api/v1/?javascript#api-get-started
+
+
+
+links util:
+- https://www.youtube.com/watch?v=rxWVeN0w6vI
+- https://www.youtube.com/watch?v=wldw2LVbjpI
