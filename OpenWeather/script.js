@@ -40,7 +40,7 @@ const getWeatherData = async (city) => {
     const coordenadas = getWeatherLatLon();
     
     console.log(coordenadas);
-    // const apiWeatherURL = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordenadas[0]}&lon=${coordenadas[1]}&&appid=${apiKey}`;
+    // const apiWeatherURL = `api.openweathermap.org/data/2.5/forecast/daily?lat=${coordenadas[0]}&lon=${coordenadas[1]}&cnt={cnt}&appid={API key}`; // trocar esse link
 
     // const res = await fetch(apiWeatherURL);
     // const data = await res.json();
