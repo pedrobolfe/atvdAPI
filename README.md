@@ -1,3 +1,3 @@
 - Atividade de Programação Web
 
-Objetivo inicial: criar um web site que ira consumir uma API de dados  meteorológicos
+Objetivo inicial: criar um web site que ira mostrar o clima de cidades

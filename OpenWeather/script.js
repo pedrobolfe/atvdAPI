@@ -1,6 +1,5 @@
-const frm = document.querySelector("form");
 const apiKey = "990a7b14056318ea064411f5411620c1";
-
+const cityInput = document.querySelector("#city-input");
 const searchBtn = document.querySelector("#search");
 
 const cityElement = document.querySelector("#city");
@@ -19,77 +18,71 @@ const loader = document.querySelector("#loader");
 const suggestionContainer = document.querySelector("#suggestions");
 const suggestionButtons = document.querySelectorAll("#suggestions button");
 
+// Loader
 const toggleLoader = () => {
-    loader.classList.toggle("hide");
-};
-// obter latitude e lngitude
-const getWeatherLatLon = async (city) => {
-    const apiWeatherLatLon = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`; 
-  
-    const res = await fetch(apiWeatherLatLon);
-    const geo = await res.json();
-
-    const lat = geo[0].lat;
-    const lon = geo[0].lon;
-
-    return [lat, lon];
+  loader.classList.toggle("hide");
 };
 
 const getWeatherData = async (city) => {
-    //toggleLoader();
-    const coordenadas = getWeatherLatLon();
-    
-    console.log(coordenadas);
-    // const apiWeatherURL = `api.openweathermap.org/data/2.5/forecast/daily?lat=${coordenadas[0]}&lon=${coordenadas[1]}&cnt={cnt}&appid={API key}`; // trocar esse link
+  toggleLoader();
 
-    // const res = await fetch(apiWeatherURL);
-    // const data = await res.json();
-  
-    // toggleLoader();
-    // console.log(data);
-    // return data;
-  };
+  const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
+
+  const res = await fetch(apiWeatherURL);
+  const data = await res.json();
+
+  toggleLoader();
+
+  return data;
+};
 
 // Tratamento de erro
 const showErrorMessage = () => {
-    errorMessageContainer.classList.remove("hide");
+  errorMessageContainer.classList.remove("hide");
 };
-  
+
 const hideInformation = () => {
-    errorMessageContainer.classList.add("hide");
-    weatherContainer.classList.add("hide");
+  errorMessageContainer.classList.add("hide");
+  weatherContainer.classList.add("hide");
 };
 
 const showWeatherData = async (city) => {
-    hideInformation();
-  
-    const data = await getWeatherData(city);
-  
-    if (data.cod === "404") {
-      showErrorMessage();
-      return;
-    }
-  
-    cityElement.innerText = data.name;
-    tempElement.innerText = parseInt(data.main.temp);
-    descElement.innerText = data.weather[0].description;
-    weatherIconElement.setAttribute(
-      "src",
-      `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
-    );
-    countryElement.setAttribute("src", apiCountryURL + data.sys.country);
-    umidityElement.innerText = `${data.main.humidity}%`;
-    windElement.innerText = `${data.wind.speed}km/h`;
-  };
-frm.addEventListener("submit", (e) => {
-    //evita o envio do formulario
-    e.preventDefault();
+  hideInformation();
 
-    // obter a cidade 
-    const city = String(frm.inCity.value);
+  const data = await getWeatherData(city);
 
-    // obter lat e lon da cidadem, pois o request do clima precisa desses dados
-    getWeatherLatLon(city);
+  if (data.cod === "404") {
+    showErrorMessage();
+    return;
+  }
+
+  cityElement.innerText = data.name;
+  tempElement.innerText = parseInt(data.main.temp);
+  descElement.innerText = data.weather[0].description;
+  weatherIconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
+  );
+  
+  umidityElement.innerText = `${data.main.humidity}%`;
+  windElement.innerText = `${data.wind.speed}km/h`;
+
+  weatherContainer.classList.remove("hide");
+};
+
+
+searchBtn.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  const city = cityInput.value;
+
+  showWeatherData(city);
 });
 
-// const apiWeatherURL = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&&appid=${apiKey}`;
+cityInput.addEventListener("keyup", (e) => {
+  if (e.code === "Enter") {
+    const city = e.target.value;
+
+    showWeatherData(city);
+  }
+});
