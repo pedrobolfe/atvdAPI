@@ -23,7 +23,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: var(--bg-color) ;
+    background: linear-gradient(rgba(17, 98, 248, 0.8), #80bdf0);
 }
 
 .container {
@@ -53,6 +53,7 @@ body {
     display: flex;
     flex-direction: column-reverse;
     height: 40px;
+    
 }
 
 .inputbox label {
