@@ -5,7 +5,7 @@ let responseDiv;
 let response;
 
 
-const apiKey = "AryZ6oe3U6f4ak9aXlijRZKEwKCVw3WySPcN2jEFKYRxZcoDkGULCC6Klo_rlHWr"; // CHAVE DA API DO BING
+const apiKey = ""; // CHAVE DA API DO BING
 
 // 'use strict';
 function limparFormulario() {
@@ -23,59 +23,7 @@ function preencherFormulario(data_bing, data_osrm) {
     document.getElementById('longitude').value = data_bing.resourceSets[0].resources[0].point.coordinates[1];
     document.getElementById('distancia').value = (data_osrm.routes[0].distance / 1000).toFixed(2) + " Km"; // deixando em KM
     document.getElementById('temp_aprox').value = (data_osrm.routes[0].duration / 60).toFixed(2) + " min"; // deixando em minutos
-    initMap();
 }
-
-function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 8,
-      center: { lat: -34.397, lng: 150.644 },
-      mapTypeControl: false,
-    });
-    geocoder = new google.maps.Geocoder();
-  
-    const inputText = document.getElementById('endereco').value;
-  
-    const submitButton = document.createElement("input");
-  
-    submitButton.type = "button";
-    submitButton.value = "Geocode";
-    submitButton.classList.add("button", "button-primary");
-  
-    const clearButton = document.createElement("input");
-
-  
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(inputText);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(submitButton);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(clearButton);
-    marker = new google.maps.Marker({
-      map,
-    });
-    
-
-    geocode({ address: inputText.value });
-    
-}
-  
-function geocode(request) {
-    geocoder.geocode(request).then((result) => {
-        const { results } = result;
-
-        console.log(results[0].place_id);
-        map.setCenter(results[0].geometry.location);
-        marker.setPosition(results[0].geometry.location);
-        marker.setMap(map);
-        responseDiv.style.display = "block";
-        response.innerText = JSON.stringify(result, null, 2);
-        return results;
-      })
-      .catch((e) => {
-        alert("Geocode was not successful for the following reason: " + e);
-      });
-}
-  
-// window.initMap = initMap;
-
 
 async function cadastrarAluno() {
     const endereco = document.getElementById('endereco').value.replace(" ", "");
@@ -108,14 +56,9 @@ async function cadastrarAluno() {
     const dados_osrm = await fetch(url_osrm + url_coordenas);
     // carregando o json da response
     const data_osrm = await dados_osrm.json();
-    console.log(data_osrm);
 
     // usando a biblioteca para geodecodificar as rotas obtidas na response da OSRM
     const georoute = data_osrm.routes[0].geometry
-    console.log(georoute);
-
-
-
 
     //Se a consulta da API não retornar um CEP, um erro ocorre
     if (data_bing.hasOwnProperty('erro')) {
@@ -126,4 +69,3 @@ async function cadastrarAluno() {
 }
 
 document.getElementById('endereco').addEventListener('focusout', cadastrarAluno);
-//85814-800
