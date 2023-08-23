@@ -1,10 +1,3 @@
-let map;
-let marker;
-let geocoder;
-let responseDiv;
-let response;
-
-
 const apiKey = ""; // CHAVE DA API DO BING
 
 // 'use strict';
