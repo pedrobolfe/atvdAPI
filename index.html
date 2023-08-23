@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="scripts/main.js" type='module' defer></script>
-    <title>Cadastro</title>
+    <title>Geodados</title>
 </head>
 <body>
     <header>
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Instituto_Federal_do_Paran%C3%A1_-_Marca_Horizontal_2015.svg/2560px-Instituto_Federal_do_Paran%C3%A1_-_Marca_Horizontal_2015.svg.png" alt="">
     </header>
     <main class="container">
-        <h1 class="title">Cadastro de Alunos</h1>
+        <h1 class="title">Dados Geográficos</h1>
         <div class="row">
             <div class="inputbox">
                 <input type="text" id="nome" required>
@@ -43,26 +43,13 @@
                 <label for="temp_aprox">Tempo aproximado de viagem</label>
             </div>
         </div>
-
-
-
+        
         <div class="row">
             <button>Cadastrar</button>
         </div>
-
-        
     </main>
     <footer>
         Pedro Miotto e Pedro Schroeder &#169 2023
     </footer>
-
-    <script>
-        (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-          key: "AIzaSyACK-Y7ipqd3Z4nbJQeX29rvtTsbe1rAy8",
-          v: "weekly",
-          // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-          // Add other bootstrap parameters as needed, using camel case.
-        });
-      </script>
 </body>
 </html>
